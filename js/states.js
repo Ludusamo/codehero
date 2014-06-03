@@ -3,6 +3,8 @@ var Game = {};
 var player;
 var map;
 var layer;
+var font;
+var displayText;
 
 // Main Menu
 Game.MainMenu = function(game) {};
@@ -11,6 +13,7 @@ Game.MainMenu.prototype = {
 		game.load.spritesheet('playerSheet', 'res/spritesheets/player.png', 32, 32);
 		game.load.tilemap('testMap', 'res/maps/test.json', null, Phaser.Tilemap.TILED_JSON);
 		game.load.image('Tilesheet_A', 'res/spritesheets/Tilesheet_A.png');
+		game.load.image('Font_A', 'res/font/Font_A.png');
 	},
 	create:function() {
 		game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -22,6 +25,10 @@ Game.MainMenu.prototype = {
 		layer = map.createLayer('layer');
 		layer.debug = true;
 		layer.resizeWorld();
+
+		font = game.add.retroFont('Font_A', 16, 16, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.', 26, 0, 0);
+		game.add.image(32, 32, font).fixedToScreen = true;
+		font.text = 'test';
 
 		player = game.add.sprite(0, 0, 'playerSheet');
 		game.physics.arcade.enable(player);
