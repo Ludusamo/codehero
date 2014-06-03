@@ -6,6 +6,10 @@ var layer;
 var font;
 var displayText;
 
+function setText(text) {
+	font.text = text;
+}
+
 // Main Menu
 Game.MainMenu = function(game) {};
 Game.MainMenu.prototype = {
@@ -29,7 +33,7 @@ Game.MainMenu.prototype = {
 		font = game.add.retroFont('Font_A', 16, 16, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.', 26, 0, 0);
 		displayText = game.add.image(32, 32, font);
 		displayText.fixedToCamera = true;
-		font.text = 'test';
+		setText('Move using directional arrows.');
 
 		player = game.add.sprite(0, 0, 'playerSheet');
 		game.physics.arcade.enable(player);
