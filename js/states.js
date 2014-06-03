@@ -27,7 +27,8 @@ Game.MainMenu.prototype = {
 		layer.resizeWorld();
 
 		font = game.add.retroFont('Font_A', 16, 16, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.', 26, 0, 0);
-		game.add.image(32, 32, font).fixedToCamera = true;
+		displayText = game.add.image(32, 32, font);
+		displayText.fixedToCamera = true;
 		font.text = 'test';
 
 		player = game.add.sprite(0, 0, 'playerSheet');
