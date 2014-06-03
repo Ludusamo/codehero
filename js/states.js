@@ -26,6 +26,7 @@ Game.MainMenu.prototype = {
 		player = game.add.sprite(0, 0, 'playerSheet');
 		game.physics.arcade.enable(player);
 		player.body.collideWorldBounds = true;
+		player.scale.set(2, 2);
 
 		cursors = game.input.keyboard.createCursorKeys();
 
