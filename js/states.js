@@ -14,7 +14,7 @@ function setText(text) {
 Game.MainMenu = function(game) {};
 Game.MainMenu.prototype = {
 	preload:function() {
-		game.load.spritesheet('playerSheet', 'res/spritesheets/player.png', 32, 32);
+		game.load.spritesheet('playerSheet', 'res/spritesheets/player.png', 12, 32);
 		game.load.tilemap('testMap', 'res/maps/test.json', null, Phaser.Tilemap.TILED_JSON);
 		game.load.image('Tilesheet_A', 'res/spritesheets/Tilesheet_A.png');
 		game.load.image('Font_A', 'res/font/Font_A.png');
@@ -56,7 +56,7 @@ Game.MainMenu.prototype = {
 			player.body.velocity.x = -100;
 		}
 		if (cursors.up.isDown && player.body.onFloor()) {
-			player.body.velocity.y = -500;
+			player.body.velocity.y = -300;
 		}
 	}
 };
