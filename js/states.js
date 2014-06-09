@@ -62,6 +62,8 @@ Game.rowBoat.prototype = {
 	create:function(){
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 
+		textPosition = 0;
+
 		map = game.add.tilemap('testMap');
 		map.addTilesetImage('Tilesheet_A', 'Tilesheet_A');
 		layer = map.createLayer('layer');
@@ -106,6 +108,69 @@ Game.rowBoat.prototype = {
 			player.body.velocity.x -= 1;
 		} else {
 			player.body.velocity.x = 0;
+		}
+		if (player.x > 10 * 32 && !textGoing) startText();
+		if (player.x > 75 * 32) game.state.start('roadOne');
+	}
+};
+
+var cart;
+
+Game.roadOne = function(game) {};
+Game.roadOne.prototype = {
+	preload:function(){
+		game.load.spritesheet('cartSheet', 'res/spritesheets/cartSheet.png', 32, 32);
+		game.load.spritesheet('playerSheet', 'res/spritesheets/player.png');
+		game.load.tilemap('road', 'res/maps/road.json', null, Phaser.Tilemap.TILED_JSON);
+		game.load.image('Tilesheet_A', 'res/spritesheets/Tilesheet_A.png');
+	},
+	create:function(){
+		game.physics.startSystem(Phaser.Physics.ARCADE);
+
+		textPosition = 0;
+
+		map = game.add.tilemap('road');
+		map.addTilesetImage('Tilesheet_A', 'Tilesheet_A');
+		map.setCollisionBetween(8, 10);
+		layer = map.createLayer('layer');
+		layer.debug = true;
+		layer.resizeWorld();
+
+		font = game.add.retroFont('Font_A', 16, 16, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.:?', 26, 0, 0);
+		displayText = game.add.image(32, 32, font); 
+		displayText.scale.set(.75, .75);
+		displayText.fixedToCamera = true;
+		setText('Move right.');
+
+		player = game.add.sprite(0, 18 * 32, 'playerSheet');
+		player.animations.add('walkRight', [1, 2, 3, 4, 5, 6, 7], 15, true);
+
+		game.physics.arcade.enable(player);
+		player.body.collideWorldBounds = true;
+		player.scale.set(2, 2);
+		player.smoothed = false;
+
+		cart = game.add.sprite(32, 18 * 32, 'cartSheet');
+		game.physics.arcade.enable(cart);
+		cart.body.collideWorldBounds = true;
+		cart.scale.set(2, 2);
+		cart.smoothed = false;
+
+		cursors = game.input.keyboard.createCursorKeys();
+
+		game.camera.follow(player);
+	},
+	update:function(){
+
+		player.body.velocity.x = 0;
+		cart.body.velocity.x = 0;
+		if (cursors.right.isDown && player.state == 0) {
+			player.body.velocity.x = 100;
+			cart.body.velocity.x = 100;
+			player.animations.start('walkRight');
+		} else {
+			player.animations.stop();
+			player.frame = 0;
 		}
 		if (player.x > 10 * 32 && !textGoing) startText();
 		if (player.x > 75 * 32) game.state.start('rowBoat');
