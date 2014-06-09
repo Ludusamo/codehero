@@ -41,13 +41,14 @@ Game.MainMenu.prototype = {
 var textGoing = false;
 var textPosition = 0;
 var story = new Array();
-story[0] = 'Nick: I’m scared, \n where are we going, Dad?';
-story[1] = 'Father: Over to the Indian Camp. \n There, you will feel better.';
+story[0] = 'Nick: I’m scared, where are we going, Dad?';
+story[1] = 'Father: Over to the Indian Camp. There, you will feel better.';
 story[2] = 'Nick: How do you know?';
 story[3] = 'Father: You will learn in time, Nick.';
 function startText() {
 	textGoing = true;
-	game.time.events.loop(10000, function() {textPosition++; setText(story[textPosition])}, textPosition < 4);
+	setText(story[textPosition]);
+	game.time.events.loop(10000, function() {textPosition++; setText(story[textPosition]);}, textPosition < 4);
 }
 
 Game.rowBoat = function(game) {};
