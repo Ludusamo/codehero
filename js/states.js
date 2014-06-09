@@ -49,7 +49,7 @@ story[3] = 'Father: I think it’s pretty easy.';
 function startText() {
 	textGoing = true;
 	setText(story[textPosition]);
-	game.time.events.loop(10000, function() {textPosition++; if (textPosition < 4) setText(story[textPosition]);}, textPosition < 4);
+	game.time.events.loop(5000, function() {textPosition++; if (textPosition < 4) setText(story[textPosition]);}, textPosition < 4);
 }
 
 Game.rowBoat = function(game) {};
@@ -108,6 +108,6 @@ Game.rowBoat.prototype = {
 			player.body.velocity.x = 0;
 		}
 		if (player.x > 10 * 32 && !textGoing) startText();
-		if (player.x > 50 * 32) game.state.start('rowBoat');
+		if (player.x > 75 * 32) game.state.start('rowBoat');
 	}
 };
