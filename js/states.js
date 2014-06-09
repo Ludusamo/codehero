@@ -166,7 +166,7 @@ Game.roadOne.prototype = {
 		if (cursors.right.isDown) {
 			player.body.velocity.x = 100;
 			cart.body.velocity.x = 100;
-			player.animations.start('walkRight');
+			player.animations.play('walkRight');
 		} else {
 			player.animations.stop();
 			player.frame = 0;
