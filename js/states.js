@@ -66,7 +66,7 @@ Game.rowBoat.prototype = {
 		layer.debug = true;
 		layer.resizeWorld();
 
-		font = game.add.retroFont('Font_A', 16, 16, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.', 26, 0, 0);
+		font = game.add.retroFont('Font_A', 16, 16, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.:?', 26, 0, 0);
 		displayText = game.add.image(32, 32, font);
 		displayText.fixedToCamera = true;
 		setText('Move by alternating LEFT and RIGHT.');
