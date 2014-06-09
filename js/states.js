@@ -39,16 +39,17 @@ Game.MainMenu.prototype = {
 };
 
 var textGoing = false;
+var textFinished = false;
 var textPosition = 0;
 var story = new Array();
 story[0] = 'Nick: I’m scared, where are we going, Dad?';
-story[1] = 'Father: Over to the Indian Camp. There, you will feel better.';
-story[2] = 'Nick: How do you know?';
-story[3] = 'Father: You will learn in time, Nick.';
+story[1] = 'Father: Over to the Indian Camp.';
+story[2] = 'Nick: Is dying hard?';
+story[3] = 'Father: I think it’s pretty easy.';
 function startText() {
 	textGoing = true;
 	setText(story[textPosition]);
-	game.time.events.loop(10000, function() {textPosition++; setText(story[textPosition]);}, textPosition < 4);
+	game.time.events.loop(10000, function() {textPosition++; if (textPosition < 4) setText(story[textPosition]);}, textPosition < 4);
 }
 
 Game.rowBoat = function(game) {};
@@ -107,5 +108,6 @@ Game.rowBoat.prototype = {
 			player.body.velocity.x = 0;
 		}
 		if (player.x > 10 * 32 && !textGoing) startText();
+		if (player.x > 50 * 32) game.state.start('rowBoat');
 	}
 };
