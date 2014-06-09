@@ -163,7 +163,7 @@ Game.roadOne.prototype = {
 	update:function(){
 		player.body.velocity.x = 0;
 		cart.body.velocity.x = 0;
-		if (cursors.right.isDown && player.state == 0) {
+		if (cursors.right.isDown) {
 			player.body.velocity.x = 100;
 			cart.body.velocity.x = 100;
 			player.animations.start('walkRight');
