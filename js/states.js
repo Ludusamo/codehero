@@ -40,7 +40,7 @@ Game.MainMenu.prototype = {
 
 var textGoing = false;
 var textPosition = 0;
-var story;
+var story = new Array();
 story[0] = 'Nick: I’m scared, where are we going, Dad?';
 story[1] = 'Father: Over to the Indian Camp. There, you will feel better.';
 story[2] = 'Nick: How do you know?';
