@@ -120,7 +120,7 @@ Game.roadOne = function(game) {};
 Game.roadOne.prototype = {
 	preload:function(){
 		game.load.spritesheet('cartSheet', 'res/spritesheets/cartSheet.png', 32, 32);
-		game.load.spritesheet('playerSheet', 'res/spritesheets/player.png');
+		game.load.spritesheet('playerSheet', 'res/spritesheets/player.png', 16, 32);
 		game.load.tilemap('road', 'res/maps/road.json', null, Phaser.Tilemap.TILED_JSON);
 		game.load.image('Tilesheet_A', 'res/spritesheets/Tilesheet_A.png');
 	},
@@ -161,7 +161,6 @@ Game.roadOne.prototype = {
 		game.camera.follow(player);
 	},
 	update:function(){
-
 		player.body.velocity.x = 0;
 		cart.body.velocity.x = 0;
 		if (cursors.right.isDown && player.state == 0) {
