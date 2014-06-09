@@ -68,7 +68,7 @@ Game.rowBoat.prototype = {
 
 		font = game.add.retroFont('Font_A', 16, 16, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.:?', 26, 0, 0);
 		displayText = game.add.image(32, 32, font); 
-		displayText.scale.set(.5, .5);
+		displayText.scale.set(.75, .75);
 		displayText.fixedToCamera = true;
 		setText('Move by alternating LEFT and RIGHT.');
 
