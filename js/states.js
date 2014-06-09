@@ -38,6 +38,18 @@ Game.MainMenu.prototype = {
 	}
 };
 
+var textGoing = false;
+var textPosition = 0;
+var story;
+story[0] = 'Nick: I’m scared, where are we going, Dad?';
+story[1] = 'Father: Over to the Indian Camp. There, you will feel better.';
+story[2] = 'Nick: How do you know?';
+story[3] = 'Father: You will learn in time, Nick.';
+function startText() {
+	textGoing = true;
+	game.time.events.loop(2000, function() {textPosition++; setText(story[textPosition])}, textPosition < 4);
+}
+
 Game.rowBoat = function(game) {};
 Game.rowBoat.prototype = {
 	preload:function(){
@@ -92,8 +104,6 @@ Game.rowBoat.prototype = {
 		} else {
 			player.body.velocity.x = 0;
 		}
-		if (player.x > 45 * 32) {
-			game.state.start('rowBoat');
-		}
+		if (player.x > 10 * 32 && !textGoing) startText();
 	}
 };
