@@ -42,11 +42,7 @@ var textGoing = false;
 var textFinished = false;
 var textPosition = 0;
 var story = new Array();
-story[0] = 'Nick: I’m scared, where are we going, Dad?';
-story[1] = 'Father: Over to the Indian Camp.';
-story[2] = 'Nick: Is dying hard?';
-story[3] = 'Father: I think it’s pretty easy.';
-story[4] = 'Continue right.'
+
 function startText(storyLength) {
 	textGoing = true;
 	setText(story[textPosition]);
@@ -63,7 +59,14 @@ Game.rowBoat.prototype = {
 	create:function(){
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 
+		story[0] = 'Nick: I’m scared, where are we going, Dad?';
+		story[1] = 'Father: Over to the Indian Camp.';
+		story[2] = 'Nick: Is dying hard?';
+		story[3] = 'Father: I think it’s pretty easy.';
+		story[4] = 'Continue right.'	
+
 		textPosition = 0;
+		textGoing = false;
 
 		map = game.add.tilemap('testMap');
 		map.addTilesetImage('Tilesheet_A', 'Tilesheet_A');
@@ -116,18 +119,6 @@ Game.rowBoat.prototype = {
 };
 
 var cart;
-story[0] = 'Son: Can I ask you something?';
-story[1] = 'Father: Yes. Of course.';
-story[2] = 'Son: Are we going to die?';
-story[3] = 'Father: Sometime. Not now.';
-story[4] = 'Son: And we’re still going south.';
-story[5] = 'Father: Yes.';
-story[6] = 'Son: So we’ll be warm.';
-story[7] = 'Father: Yes.';
-story[8] = 'Son: Okay.';
-story[9] = 'Father: Okay what?';
-story[10] = 'Son: Nothing. Just okay. ';
-story[11] = 'Keep walking.'
 
 Game.roadOne = function(game) {};
 Game.roadOne.prototype = {
@@ -139,6 +130,19 @@ Game.roadOne.prototype = {
 	},
 	create:function(){
 		game.physics.startSystem(Phaser.Physics.ARCADE);
+
+		story[0] = 'Son: Can I ask you something?';
+		story[1] = 'Father: Yes. Of course.';
+		story[2] = 'Son: Are we going to die?';
+		story[3] = 'Father: Sometime. Not now.';
+		story[4] = 'Son: And we’re still going south.';
+		story[5] = 'Father: Yes.';
+		story[6] = 'Son: So we’ll be warm.';
+		story[7] = 'Father: Yes.';
+		story[8] = 'Son: Okay.';
+		story[9] = 'Father: Okay what?';
+		story[10] = 'Son: Nothing. Just okay. ';
+		story[11] = 'Keep walking.'
 
 		textPosition = 0;
 		textGoing = false;
