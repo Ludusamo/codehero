@@ -46,10 +46,11 @@ story[0] = 'Nick: I’m scared, where are we going, Dad?';
 story[1] = 'Father: Over to the Indian Camp.';
 story[2] = 'Nick: Is dying hard?';
 story[3] = 'Father: I think it’s pretty easy.';
-function startText() {
+story[4] = 'Continue right.'
+function startText(storyLength) {
 	textGoing = true;
 	setText(story[textPosition]);
-	game.time.events.loop(5000, function() {textPosition++; if (textPosition < 4) setText(story[textPosition]);}, textPosition < 4);
+	game.time.events.loop(5000, function() {textPosition++; if (textPosition < storyLength) setText(story[textPosition]);}, textPosition < 4);
 }
 
 Game.rowBoat = function(game) {};
@@ -109,12 +110,24 @@ Game.rowBoat.prototype = {
 		} else {
 			player.body.velocity.x = 0;
 		}
-		if (player.x > 10 * 32 && !textGoing) startText();
+		if (player.x > 10 * 32 && !textGoing) startText(5);
 		if (player.x > 75 * 32) game.state.start('roadOne');
 	}
 };
 
 var cart;
+story[0] = 'Son: Can I ask you something?';
+story[1] = 'Father: Yes. Of course.';
+story[2] = 'Son: Are we going to die?';
+story[3] = 'Father: Sometime. Not now.';
+story[4] = 'Son: And we’re still going south.';
+story[5] = 'Father: Yes.';
+story[6] = 'Son: So we’ll be warm.';
+story[7] = 'Father: Yes.';
+story[8] = 'Son: Okay.';
+story[9] = 'Father: Okay what?';
+story[10] = 'Son: Nothing. Just okay. ';
+story[11] = 'Keep walking.'
 
 Game.roadOne = function(game) {};
 Game.roadOne.prototype = {
@@ -128,6 +141,7 @@ Game.roadOne.prototype = {
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 
 		textPosition = 0;
+		textGoing = false;
 
 		map = game.add.tilemap('road');
 		map.addTilesetImage('Tilesheet_A', 'Tilesheet_A');
@@ -171,7 +185,7 @@ Game.roadOne.prototype = {
 			player.animations.stop();
 			player.frame = 0;
 		}
-		if (player.x > 10 * 32 && !textGoing) startText();
+		if (player.x > 10 * 32 && !textGoing) startText(12);
 		if (player.x > 75 * 32) game.state.start('rowBoat');
 	}
 };
