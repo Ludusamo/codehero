@@ -268,6 +268,7 @@ var cannibal;
 Game.roadTwo = function(game) {};
 Game.roadTwo.prototype = {
 	preload:function(){
+		game.load.image('Tilesheet_A', 'res/spritesheets/Tilesheet_A.png');
 		game.load.tilemap('woods', 'res/maps/woods.json', null, Phaser.Tilemap.TILED_JSON);
 		game.load.spritesheet('cannibalSheet', 'res/spritesheets/cannibal.png', 16, 32);
 	},
