@@ -74,7 +74,7 @@ Game.rowBoat.prototype = {
 		layer.debug = true;
 		layer.resizeWorld();
 
-		font = game.add.retroFont('Font_A', 16, 16, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.:?', 26, 0, 0);
+		font = game.add.retroFont('Font_A', 16, 16, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.:?\'', 26, 0, 0);
 		displayText = game.add.image(32, 32, font); 
 		displayText.scale.set(.75, .75);
 		displayText.fixedToCamera = true;
@@ -150,7 +150,7 @@ Game.roadOne.prototype = {
 		layer = map.createLayer('layer');
 		layer.resizeWorld();
 
-		font = game.add.retroFont('Font_A', 16, 16, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.:?', 26, 0, 0);
+		font = game.add.retroFont('Font_A', 16, 16, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.:?\'', 26, 0, 0);
 		displayText = game.add.image(32, 32, font); 
 		displayText.scale.set(.75, .75);
 		displayText.fixedToCamera = true;
@@ -178,8 +178,8 @@ Game.roadOne.prototype = {
 		player.body.velocity.x = 0;
 		cart.body.velocity.x = 0;
 		if (cursors.right.isDown) {
-			player.body.velocity.x = 20;
-			cart.body.velocity.x = 20;
+			player.body.velocity.x = 40;
+			cart.body.velocity.x = 40;
 			player.animations.play('walkRight');
 		} else {
 			player.animations.stop();
@@ -216,7 +216,7 @@ Game.rowBoatTwo.prototype = {
 		layer.debug = true;
 		layer.resizeWorld();
 
-		font = game.add.retroFont('Font_A', 16, 16, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.:?', 26, 0, 0);
+		font = game.add.retroFont('Font_A', 16, 16, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.:?\'', 26, 0, 0);
 		displayText = game.add.image(32, 32, font); 
 		displayText.scale.set(.75, .75);
 		displayText.fixedToCamera = true;
