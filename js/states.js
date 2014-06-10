@@ -270,6 +270,8 @@ Game.roadTwo.prototype = {
 	preload:function(){
 		game.load.image('Tilesheet_A', 'res/spritesheets/Tilesheet_A.png');
 		game.load.tilemap('woods', 'res/maps/woods.json', null, Phaser.Tilemap.TILED_JSON);
+		game.load.spritesheet('playerSheet', 'res/spritesheets/player.png', 16, 32);
+		game.load.spritesheet('cartSheet', 'res/spritesheets/cartSheet.png', 32, 32);
 		game.load.spritesheet('cannibalSheet', 'res/spritesheets/cannibal.png', 16, 32);
 	},
 	create:function(){
