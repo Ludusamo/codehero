@@ -149,9 +149,7 @@ Game.roadOne.prototype = {
 
 		map = game.add.tilemap('road');
 		map.addTilesetImage('Tilesheet_A', 'Tilesheet_A');
-		map.setCollisionBetween(8, 10);
 		layer = map.createLayer('layer');
-		layer.debug = true;
 		layer.resizeWorld();
 
 		font = game.add.retroFont('Font_A', 16, 16, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.:?', 26, 0, 0);
@@ -160,7 +158,7 @@ Game.roadOne.prototype = {
 		displayText.fixedToCamera = true;
 		setText('Move right.');
 
-		player = game.add.sprite(0, 18 * 32, 'playerSheet');
+		player = game.add.sprite(0, (18 * 32) - 16, 'playerSheet');
 		player.animations.add('walkRight', [1, 2, 3, 4, 5, 6, 7], 15, true);
 
 		game.physics.arcade.enable(player);
@@ -168,7 +166,7 @@ Game.roadOne.prototype = {
 		player.scale.set(2, 2);
 		player.smoothed = false;
 
-		cart = game.add.sprite(32, 18 * 32, 'cartSheet');
+		cart = game.add.sprite(32, (18 * 32) - 16, 'cartSheet');
 		game.physics.arcade.enable(cart);
 		cart.body.collideWorldBounds = true;
 		cart.scale.set(2, 2);
@@ -182,8 +180,8 @@ Game.roadOne.prototype = {
 		player.body.velocity.x = 0;
 		cart.body.velocity.x = 0;
 		if (cursors.right.isDown) {
-			player.body.velocity.x = 100;
-			cart.body.velocity.x = 100;
+			player.body.velocity.x = 20;
+			cart.body.velocity.x = 20;
 			player.animations.play('walkRight');
 		} else {
 			player.animations.stop();
