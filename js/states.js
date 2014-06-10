@@ -114,7 +114,7 @@ Game.rowBoat.prototype = {
 			player.body.velocity.x = 0;
 		}
 		if (player.x > 10 * 32 && !textGoing) startText(5);
-		if (player.x > 75 * 32) game.state.start('roadOne');
+		if (player.x > 90 * 32) game.state.start('roadOne');
 	}
 };
 
@@ -190,6 +190,6 @@ Game.roadOne.prototype = {
 			player.frame = 0;
 		}
 		if (player.x > 10 * 32 && !textGoing) startText(12);
-		if (player.x > 75 * 32) game.state.start('rowBoat');
+		if (player.x > 90 * 32) game.state.start('rowBoat');
 	}
 };
