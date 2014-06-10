@@ -340,14 +340,18 @@ Game.roadTwo.prototype = {
 		if (cursors.right.isDown) {
 			player.body.velocity.x = 75;
 			cart.body.velocity.x = 75;
-			cannibal.body.velocity.x = 75;
 			player.animations.play('walkRight');
-			cannibal.animations.play('walkRight');
+			if (textPosition < 5) {
+				cannibal.body.velocity.x = 75;
+				cannibal.animations.play('walkRight');		
+			}
 		} else {
 			player.animations.stop();
 			player.frame = 0;
-			cannibal.animations.stop();
-			cannibal.frame = 0;
+			if (textPosition < 5) {
+				cannibal.animations.stop();
+				cannibal.frame = 0;
+			}
 		}
 		if (player.x > 10 * 32 && !textGoing) startText(17);
 		if (textPosition == 5) cannibal.destroy();
