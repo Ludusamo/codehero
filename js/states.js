@@ -335,8 +335,6 @@ Game.roadTwo.prototype = {
 		game.camera.follow(player);
 	},
 	update:function(){
-		player.body.velocity.x = 0;
-		cart.body.velocity.x = 0;
 		if (cursors.right.isDown) {
 			player.body.velocity.x = 75;
 			cart.body.velocity.x = 75;
@@ -348,7 +346,10 @@ Game.roadTwo.prototype = {
 		} else {
 			player.animations.stop();
 			player.frame = 0;
+			player.body.velocity.x = 0;
+			cart.body.velocity.x = 0;
 			if (textPosition < 5) {
+				cannibal.body.velocity.x = 0;
 				cannibal.animations.stop();
 				cannibal.frame = 0;
 			}
