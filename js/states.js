@@ -355,7 +355,7 @@ Game.roadTwo.prototype = {
 			}
 		}
 		if (player.x > 10 * 32 && !textGoing) startText(17);
-		if (textPosition == 5) cannibal.destroy();
+		if (textPosition == 5) cannibal.kill();
 		if (player.x > 190 * 32) game.state.start('rowBoatTwo');
 	}
 };
