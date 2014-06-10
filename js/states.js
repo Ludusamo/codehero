@@ -96,8 +96,6 @@ Game.rowBoat.prototype = {
 		game.camera.follow(player);
 	},
 	update:function(){
-		game.physics.arcade.collide(player, layer);
-
 		player.body.acceleration.x = 0;
 		if (cursors.right.isDown && player.state == 0) {
 			player.state = 1;
@@ -188,6 +186,77 @@ Game.roadOne.prototype = {
 			player.frame = 0;
 		}
 		if (player.x > 10 * 32 && !textGoing) startText(12);
-		if (player.x > 90 * 32) game.state.start('rowBoat');
+		if (player.x > 90 * 32) game.state.start('rowBoatTwo');
+	}
+};
+
+Game.rowBoatTwo = function(game) {};
+Game.rowBoatTwo.prototype = {
+	preload:function(){
+
+	},
+	create:function(){
+		game.physics.startSystem(Phaser.Physics.ARCADE);
+
+		story[0] = 'Girlfriend: There’s the old ruin. Remember when it used to be a mill?';
+		story[1] = 'Nick: Yeah. I can just remember.';
+		story[2] = 'Girlfriend: There’s going to be a moon tonight. ';
+		story[3] = 'Nick: You know everything. I’ve taught you everything. Love just isn’t fun anymore.';
+		story[4] = 'Girlfriend: What?';
+		story[5] = 'Nick: The relationship just isn’t fun any more. I think we should part ways.';
+		story[6] = 'Nick: Where is everyone?';
+		story[7] = 'Continue to the Right.';	
+
+		textPosition = 0;
+		textGoing = false;
+
+		map = game.add.tilemap('testMap');
+		map.addTilesetImage('Tilesheet_A', 'Tilesheet_A');
+		layer = map.createLayer('layer');
+		layer.debug = true;
+		layer.resizeWorld();
+
+		font = game.add.retroFont('Font_A', 16, 16, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.:?', 26, 0, 0);
+		displayText = game.add.image(32, 32, font); 
+		displayText.scale.set(.75, .75);
+		displayText.fixedToCamera = true;
+		setText('Move by alternating LEFT and RIGHT.');
+
+		player = game.add.sprite(0, 16 * 32, 'boatSheet');
+		player.frame = 3;
+
+		// States for rowing
+		player.state = 0; // LEFT
+		player.modifier = 1;
+
+		game.physics.arcade.enable(player);
+		player.body.maxVelocity.x = 150;
+		player.body.collideWorldBounds = true;
+		player.scale.set(2, 2);
+		player.smoothed = false;
+
+		cursors = game.input.keyboard.createCursorKeys();
+
+		game.camera.follow(player);
+	},
+	update:function(){
+		player.body.acceleration.x = 0;
+		if (cursors.right.isDown && player.state == 0) {
+			player.state = 1;
+			player.frame = 4 + player.modifier;
+		}
+		if (cursors.left.isDown && player.state == 1) {
+			player.body.acceleration.x = 5000;
+			player.state = 0;
+			player.frame = 2 + player.modifier;
+		}
+		if (player.body.velocity.x > 0) {
+			player.body.velocity.x -= 1;
+		} else {
+			player.body.velocity.x = 0;
+		}
+		if (player.x > 10 * 32 && !textGoing) startText(8);
+		if (textPosition == 5) player.modifier = 0;
+		if (player.x > 150 * 32) game.state.start('roadOne');
 	}
 };
