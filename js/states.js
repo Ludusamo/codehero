@@ -285,7 +285,7 @@ Game.roadTwo.prototype = {
 		story[5] = 'Father: You wanted to know what the bad guys looked like.';
 		story[6] = 'Father: Now you know. It may happen again.';
 		story[7] = 'Father: My job is to take care of you.';
-		story[8] = 'Father: i was appointed to do that by God. ';
+		story[8] = 'Father: I was appointed to do that by God. ';
 		story[9] = 'Father: I will kill anyone who touches you. Do you understand?';
 		story[10] = 'Son: Yes.';
 		story[11] = 'Son: Are we still the good guys?';
@@ -355,7 +355,7 @@ Game.roadTwo.prototype = {
 			}
 		}
 		if (player.x > 10 * 32 && !textGoing) startText(17);
-		if (textPosition == 5) cannibal.kill();
+		// if (textPosition == 5) cannibal.kill();
 		if (player.x > 190 * 32) game.state.start('rowBoatTwo');
 	}
 };
