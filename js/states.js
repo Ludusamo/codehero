@@ -46,7 +46,7 @@ var story = new Array();
 function startText(storyLength) {
 	textGoing = true;
 	setText(story[textPosition]);
-	game.time.events.loop(5000, function() {textPosition++; if (textPosition < storyLength) setText(story[textPosition]);}, textPosition < 4);
+	game.time.events.loop(5000, function() {textPosition++; if (textPosition < storyLength) setText(story[textPosition]);}, textPosition < storyLength);
 }
 
 Game.rowBoat = function(game) {};
