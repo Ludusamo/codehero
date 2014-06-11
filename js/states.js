@@ -309,7 +309,7 @@ Game.roadTwo.prototype = {
 		displayText.fixedToCamera = true;
 		setText('Move right.');
 
-		player = game.add.sprite(64, (35 * 32), 'playerSheet');
+		player = game.add.sprite(64, (35 * 32) - 16, 'playerSheet');
 		player.animations.add('walkRight', [1, 2, 3, 4, 5, 6, 7], 15, true);
 
 		game.physics.arcade.enable(player);
@@ -317,13 +317,13 @@ Game.roadTwo.prototype = {
 		player.scale.set(2, 2);
 		player.smoothed = false;
 
-		cart = game.add.sprite(96, (35 * 32), 'cartSheet');
+		cart = game.add.sprite(96, (35 * 32) - 16, 'cartSheet');
 		game.physics.arcade.enable(cart);
 		cart.body.collideWorldBounds = true;
 		cart.scale.set(2, 2);
 		cart.smoothed = false;
 
-		cannibal = game.add.sprite(0, (35 * 32), 'cannibalSheet');
+		cannibal = game.add.sprite(0, (35 * 32) - 16, 'cannibalSheet');
 		cannibal.animations.add('walkRight', [1, 2, 3, 4, 5, 6, 7], 15, true);
 		game.physics.arcade.enable(cannibal);
 		cannibal.body.collideWorldBounds = true;
