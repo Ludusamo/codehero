@@ -293,7 +293,7 @@ Game.roadTwo.prototype = {
 		story[13] = 'Son: And we always will be.';
 		story[14] = 'Father: Yes. We always will be.';
 		story[15] = 'Son: Okay.';
-		story[16] = 'Keep walking.'
+		story[16] = 'Keep walking.';
 
 		textPosition = 0;
 		textGoing = false;
@@ -355,6 +355,7 @@ Game.roadTwo.prototype = {
 			}
 		}
 		if (player.x > 10 * 32 && !textGoing) startText(17);
+		if (textPosition == 5) cannibal.kill();
 		if (player.x > 190 * 32) game.state.start('rowBoatTwo');
 	}
 };
