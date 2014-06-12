@@ -33,7 +33,7 @@ Game.MainMenu.prototype = {
 	},
 	update:function() {
 		if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
-			game.state.start('analysis');
+			game.state.start('rowBoat');
 		}
 	}
 };
