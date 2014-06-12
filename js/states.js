@@ -336,11 +336,11 @@ Game.roadTwo.prototype = {
 	},
 	update:function(){
 		if (cursors.right.isDown && textPosition < 5) {
-			player.body.velocity.x = 75;
-			cart.body.velocity.x = 75;
+			player.body.velocity.x = 40;
+			cart.body.velocity.x = 40;
 			player.animations.play('walkRight');
 			if (textPosition < 5) {
-				cannibal.body.velocity.x = 75;
+				cannibal.body.velocity.x = 40;
 				cannibal.animations.play('walkRight');		
 			}
 		} else {
