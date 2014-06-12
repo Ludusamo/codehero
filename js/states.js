@@ -33,7 +33,7 @@ Game.MainMenu.prototype = {
 	},
 	update:function() {
 		if (game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
-			game.state.start('roadTwo');
+			game.state.start('analysis');
 		}
 	}
 };
@@ -293,7 +293,7 @@ Game.roadTwo.prototype = {
 		story[13] = 'Son: And we always will be.';
 		story[14] = 'Father: Yes. We always will be.';
 		story[15] = 'Son: Okay.';
-		story[16] = 'Keep walking.';
+		story[16] = '';
 
 		textPosition = 0;
 		textGoing = false;
@@ -356,6 +356,36 @@ Game.roadTwo.prototype = {
 		}
 		if (player.x > 10 * 32 && !textGoing) startText(17);
 		if (textPosition == 5) cannibal.kill();
-		if (textPosition == 18) game.state.start('rowBoatTwo');
+		if (textPosition == 18) game.state.start('analysis');
+	}
+};
+
+Game.analysis = function(game) {};
+Game.analysis.prototype = {
+	preload:function(){
+
+	},
+	create:function(){
+		var background = game.add.image(0, 0, 'title_screen');
+		background.scale.set(10, 10);
+		background.smoothed = false;
+
+		story[0] = 'These two works were expressed in a different media.';
+		story[1] = 'What was shown was The Road and two Hemingway Short Stories.';
+		story[2] = 'We did this to show visually the similarities between them.';
+		story[3] = 'Namely the distinguishing similarity is use of physical journey.';
+		story[4] = 'In both stories, the physical journey represents more.';
+		story[5] = 'It represents the people on that journey growing and changing.';
+		story[6] = 'This is why we decided to use a visual representation.';
+		story[7] = 'We felt it would better demonstrate the impact of the journey.';
+		story[8] = 'Thank you.';
+
+		font = game.add.retroFont('Font_A', 16, 16, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.', 26, 0, 0);
+		displayText = game.add.image(32, 32, font);
+		displayText.scale.set(.75, .75);
+		startText(9);
+	},
+	update:function(){
+		if (textPosition == 9) game.state.start('mainMenu');
 	}
 };

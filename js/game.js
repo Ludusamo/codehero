@@ -6,6 +6,7 @@ game.state.add('rowBoat', Game.rowBoat);
 game.state.add('roadOne', Game.roadOne);
 game.state.add('rowBoatTwo', Game.rowBoatTwo);
 game.state.add('roadTwo', Game.roadTwo);
+game.state.add('analysis', Game.analysis);
 
 function preload() {
 
