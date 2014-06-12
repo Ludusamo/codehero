@@ -335,7 +335,7 @@ Game.roadTwo.prototype = {
 		game.camera.follow(player);
 	},
 	update:function(){
-		if (cursors.right.isDown) {
+		if (cursors.right.isDown && textPosition < 5) {
 			player.body.velocity.x = 75;
 			cart.body.velocity.x = 75;
 			player.animations.play('walkRight');
@@ -355,7 +355,7 @@ Game.roadTwo.prototype = {
 			}
 		}
 		if (player.x > 10 * 32 && !textGoing) startText(17);
-		// if (textPosition == 5) cannibal.kill();
-		if (player.x > 190 * 32) game.state.start('rowBoatTwo');
+		if (textPosition == 5) cannibal.kill();
+		if (textPosition == 18) game.state.start('rowBoatTwo');
 	}
 };
